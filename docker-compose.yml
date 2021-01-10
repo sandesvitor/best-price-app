@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+
+    puppeteer_bots:
+      build: ./backend/src/bots
+      container_name: puppeteer_bots
+
+    postgres:
+        build: ./backend/src/db
+        container_name: postgres
+        ports:
+            - 5050:5432   
+        volumes: 
+            - volume-db:/var/lib/postgresql/data
+
+    backend:
+        build: ./backend
+        depends_on: 
+            - postgres
+        container_name: backend
+        depends_on: 
+            - postgres
+        ports:
+            - 9090:8080
+
+    frontend:
+        container_name: frontend
+        build: ./frontend
+        container_name: frontend
+        env_file: 
+            - ./frontend/.env
+        ports:
+            - 1337:80
+
+volumes:
+    volume-db:
