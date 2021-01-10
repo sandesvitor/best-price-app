@@ -1,0 +1,6 @@
+section.main-section {
+    width: 100vw;
+    max-width: 100%;
+    min-height: 50vh;
+    padding-bottom: 40px;
+}
