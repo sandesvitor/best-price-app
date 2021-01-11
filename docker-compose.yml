@@ -2,9 +2,12 @@ version: '3.7'
 
 services:
 
-    puppeteer_bots:
-      build: ./backend/src/bots
-      container_name: puppeteer_bots
+    puppeteer:
+      build: ./backend/worker
+      container_name: puppeteer
+      env_file: 
+        - ./backend/worker/.env
+    
 
     postgres:
         build: ./backend/src/db
@@ -19,6 +22,8 @@ services:
         depends_on: 
             - postgres
         container_name: backend
+        env_file: 
+        - ./backend/worker/.env
         depends_on: 
             - postgres
         ports:

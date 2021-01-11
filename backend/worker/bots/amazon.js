@@ -102,40 +102,40 @@ const amazon = async () => {
                     link: product_link,
                     imageUrl: product_img
                 }
+                console.info(data   )
+            //     const skuCheck = await Product.findOne(
+            //         {
+            //             where: { code: data.code }
+            //         }
+            //     )
 
-                const skuCheck = await Product.findOne(
-                    {
-                        where: { code: data.code }
-                    }
-                )
+            //     if (!skuCheck) {
+            //         console.info('New Product!\nStoring product on database...')
+            //         console.info(data)
+            //         await Product.create(data)
+            //     } else {
+            //         console.info('Product alread listed!\nUpdating...')
+            //         console.info(data)
+            //         await Product.update(
+            //             {
+            //                 name: data.name,
+            //                 manufacturer: data.manufacturer,
+            //                 price: data.price,
+            //                 stars: data.stars,
+            //                 link: data.link,
+            //                 imageUrl: data.imageUrl
+            //             },
+            //             {
+            //                 where: {
+            //                     retailer: 'Amazon',
+            //                     id: skuCheck.id
+            //                 }
+            //             }
+            //         )
+            //     }
+            //     console.debug('Storage completed!')
 
-                if (!skuCheck) {
-                    console.info('New Product!\nStoring product on database...')
-                    console.info(data)
-                    await Product.create(data)
-                } else {
-                    console.info('Product alread listed!\nUpdating...')
-                    console.info(data)
-                    await Product.update(
-                        {
-                            name: data.name,
-                            manufacturer: data.manufacturer,
-                            price: data.price,
-                            stars: data.stars,
-                            link: data.link,
-                            imageUrl: data.imageUrl
-                        },
-                        {
-                            where: {
-                                retailer: 'Amazon',
-                                id: skuCheck.id
-                            }
-                        }
-                    )
-                }
-                console.debug('Storage completed!')
-
-                console.log('Scrapping completed for link [%s] of page [%s]...', i + 1, j + 1)
+            //     console.log('Scrapping completed for link [%s] of page [%s]...', i + 1, j + 1)
             }
 
         }
